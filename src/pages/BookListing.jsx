@@ -1,22 +1,27 @@
 import { Box, Heading } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getData } from '../redux/dataManager/dataManager.action';
+import { getBooks } from '../redux/dataManager/dataManager.action';
 import BookCard from '../components/BookCard';
 
 import Styles from "./styles/BookListing.module.css";
+import { useNavigate } from 'react-router-dom';
 
 const BookListing = () => {
 
   const dispatch = useDispatch();
   const data = useSelector(store => store.dataManager.data);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
-    dispatch(getData());
+    dispatch(getBooks());
   }, []);
 
-  // console.log("this is data from booklisting page : " , data);
-
+  const handleSingleBook = (id) => {
+    console.log(id);
+    navigate(`/bookdetails/${id}`);
+  }
 
   return (
     <Box>
@@ -24,7 +29,7 @@ const BookListing = () => {
       <Box className={Styles.booksContainer}>
         {
           data.map((elem) => {
-            return <BookCard key={elem.id} info={elem} />
+            return <BookCard key={elem._id} info={elem} handleSingleBook={handleSingleBook} />
           })
         }
       </Box>
