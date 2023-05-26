@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/react';
+import { Box, Button, Text } from '@chakra-ui/react';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
@@ -13,14 +13,21 @@ const BookDetails = () => {
 
   useEffect(() => {
     dispatch(getSingleBook(params.id));
-  } , []);
+  }, []);
 
-  console.log(data);
+  const handleAddtoCart = () => {
+    
+  }
 
 
   return (
     <Box>
-      
+        <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoKMiaiIcTbmL_xpkRWSsrWp3bKaYDLBMaEFC9wgf-5Q&usqp=CAU&ec=48665701"} alt={data[0].title} />
+        <Text>Title : {data[0].title}</Text>
+        <Text>Genre : {data[0].genre}</Text>
+        <Text>Price : {data[0].price}</Text>
+        <Text>author : {data[0].author}</Text>
+        <Button colorScheme='whatsapp' onClick={() => handleAddtoCart(data[0]._id)}>Add to cart</Button>
     </Box>
   )
 }
