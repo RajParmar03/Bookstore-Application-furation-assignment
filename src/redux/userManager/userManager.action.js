@@ -1,6 +1,8 @@
 import { ADD_TO_CART, GET_USER, USER_LOGIN } from "./userManager.actionType";
 
-const baseUrl = "http://localhost:8080";
+// const baseUrl = "http://localhost:8080";
+const baseUrl = "https://bookstore-application-furation-assignment-bakend.vercel.app";
+
 
 export const loginUser = (userDetails) => async(dispatch) => {
     try {

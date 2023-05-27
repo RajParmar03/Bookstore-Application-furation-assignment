@@ -6,7 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 import Styles from "./styles/form.module.css";
 
-const baseUrl = "http://localhost:8080";
+// const baseUrl = "http://localhost:8080";
+const baseUrl = "https://bookstore-application-furation-assignment-bakend.vercel.app";
+
 
 const SignUpUser = async (userDetails) => {
   // console.log("this is from signupuser : " , userDetails);

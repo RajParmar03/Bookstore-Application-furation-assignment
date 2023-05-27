@@ -1,6 +1,8 @@
 import { FILTER_BOOKS, GET_BOOKS, GET_SINGLE_BOOK, SEARCH_BOOKS } from "./dataManager.actionType";
 
-const baseUrl = "http://localhost:8080";
+// const baseUrl = "http://localhost:8080";
+const baseUrl = "https://bookstore-application-furation-assignment-bakend.vercel.app";
+
 
 export const getBooks = () => async (dispatch) => {
     try {
