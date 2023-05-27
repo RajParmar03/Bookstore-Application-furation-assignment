@@ -19,7 +19,6 @@ const BookListing = () => {
   }, []);
 
   const handleSingleBook = (id) => {
-    console.log(id);
     navigate(`/bookdetails/${id}`);
   }
 

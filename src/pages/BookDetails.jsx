@@ -16,9 +16,9 @@ const BookDetails = () => {
     dispatch(getSingleBook(params.id));
   }, []);
 
-  const handleAddtoCart = (id) => {
+  const handleAddtoCart = (book) => {
     const token = localStorage.getItem("token");
-    dispatch(addBookToCart(id , token)).then((res) => {
+    dispatch(addBookToCart(book , token)).then((res) => {
       if(res){
         dispatch(getUser(token)).then(() => {
           alert("successfully added to cart.");
@@ -37,7 +37,7 @@ const BookDetails = () => {
         <Text>Genre : {data[0].genre}</Text>
         <Text>Price : {data[0].price}</Text>
         <Text>author : {data[0].author}</Text>
-        <Button colorScheme='whatsapp' onClick={() => handleAddtoCart(data[0]._id)}>Add to cart</Button>
+        <Button colorScheme='whatsapp' onClick={() => handleAddtoCart(data[0])}>Add to cart</Button>
     </Box>
   )
 }

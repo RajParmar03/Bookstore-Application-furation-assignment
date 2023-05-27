@@ -26,7 +26,7 @@ export const loginUser = (userDetails) => async(dispatch) => {
     }
 }
 
-export const addBookToCart = (id , token) => async(dispatch) => {
+export const addBookToCart = (book , token) => async(dispatch) => {
     try {
         const responce = await fetch(`${baseUrl}/users/addtocart`,{
             method : "PATCH" , 
@@ -34,7 +34,29 @@ export const addBookToCart = (id , token) => async(dispatch) => {
                 "Content-Type" : "application/json",
                 Authorization: token
             },
-            body : JSON.stringify({id : id}),
+            body : JSON.stringify(book),
+        });
+        const res = await responce.json();
+        if(res.isSuccess){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (error) {
+        console.log("error is occured in addBookToCart function" , error);
+        return false;
+    }
+}
+
+export const removeBookFromCart = (book , token) => async(dispatch) => {
+    try {
+        const responce = await fetch(`${baseUrl}/users/removefromcart`,{
+            method : "PATCH" , 
+            headers : {
+                "Content-Type" : "application/json",
+                Authorization: token
+            },
+            body : JSON.stringify(book),
         });
         const res = await responce.json();
         if(res.isSuccess){
@@ -63,3 +85,4 @@ export const getUser = (token) => async(dispatch) => {
     }
 
 }
+
