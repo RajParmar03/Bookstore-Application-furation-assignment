@@ -37,12 +37,12 @@ const Signup = () => {
       SignUpUser(values).then((res) => {
         // console.log("this is from sinupuser then : " , res);
         if(res.isSuccess){
-          alert("Success");
+          alert(res.msg);
           navigate("/login");
+          action.resetForm();
         }else{
-          alert("failure");
+          alert(res.msg);
         }
-        action.resetForm();
       });
     },
   });

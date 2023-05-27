@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { getSingleBook } from '../redux/dataManager/dataManager.action';
+import { addBookToCart, getUser } from '../redux/userManager/userManager.action';
 
 const BookDetails = () => {
 
@@ -15,8 +16,17 @@ const BookDetails = () => {
     dispatch(getSingleBook(params.id));
   }, []);
 
-  const handleAddtoCart = () => {
-    
+  const handleAddtoCart = (id) => {
+    const token = localStorage.getItem("token");
+    dispatch(addBookToCart(id , token)).then((res) => {
+      if(res){
+        dispatch(getUser(token)).then(() => {
+          alert("successfully added to cart.");
+        });
+      }else{
+        alert("failed to add to cart");
+      }
+    });
   }
 
 

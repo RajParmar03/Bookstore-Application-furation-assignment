@@ -1,4 +1,4 @@
-import { ADD_TO_CART, USER_LOGIN } from "./userManager.actionType";
+import { ADD_TO_CART, GET_USER, USER_LOGIN } from "./userManager.actionType";
 
 const initialState = {
     user : {},
@@ -14,6 +14,9 @@ const userReducer = (state = initialState , action ) => {
         }
         case ADD_TO_CART : {
             return {...state , user : payload}
+        }
+        case GET_USER : {
+            return {...state , user : payload};
         }
         default : {
             return {...state};

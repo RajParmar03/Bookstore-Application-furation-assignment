@@ -1,4 +1,4 @@
-import { ADD_TO_CART, USER_LOGIN } from "./userManager.actionType";
+import { ADD_TO_CART, GET_USER, USER_LOGIN } from "./userManager.actionType";
 
 const baseUrl = "http://localhost:8080";
 
@@ -26,19 +26,40 @@ export const loginUser = (userDetails) => async(dispatch) => {
     }
 }
 
-export const addBookToCart = (id) => async(dispatch) => {
+export const addBookToCart = (id , token) => async(dispatch) => {
     try {
         const responce = await fetch(`${baseUrl}/users/addtocart`,{
             method : "PATCH" , 
             headers : {
                 "Content-Type" : "application/json",
+                Authorization: token
             },
             body : JSON.stringify({id : id}),
         });
         const res = await responce.json();
-        dispatch({type : ADD_TO_CART , payload : res.data});
+        if(res.isSuccess){
+            return true;
+        }else{
+            return false;
+        }
     } catch (error) {
         console.log("error is occured in addBookToCart function" , error);
-        dispatch({type :ADD_TO_CART , payload : []});
+        return false;
     }
+}
+
+export const getUser = (token) => async(dispatch) => {
+
+    try {
+        const responce = await fetch(`${baseUrl}/users/getuser` , {
+            headers : {
+                Authorization : token,
+            },
+        });
+        const res = await responce.json();
+        dispatch({type : GET_USER , payload : res.user});
+    } catch (error) {
+        console.log(error);
+    }
+
 }
