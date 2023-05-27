@@ -8,6 +8,7 @@ import Checkout from '../pages/Checkout';
 import { Box } from '@chakra-ui/react';
 import Signup from '../pages/Signup';
 import Login from '../pages/Login';
+import PrivateRouter from './PrivateRouter';
 
 const AllRoutes = () => {
   return (
@@ -16,10 +17,10 @@ const AllRoutes = () => {
         <Route path="/" element={<Home />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/login" element={<Login />}></Route>
-        <Route path="/bookslist" element={<BookListing />}></Route>
-        <Route path="/bookdetails/:id" element={<BookDetails />}></Route>
-        <Route path="/shoppincart" element={<ShoppingCart />}></Route>
-        <Route path="/checkout" element={<Checkout />}></Route>
+        <Route path="/bookslist" element={<PrivateRouter><BookListing /></PrivateRouter>}></Route>
+        <Route path="/bookdetails/:id" element={<PrivateRouter><BookDetails /></PrivateRouter>}></Route>
+        <Route path="/shoppincart" element={<PrivateRouter><ShoppingCart /></PrivateRouter>}></Route>
+        <Route path="/checkout" element={<PrivateRouter><Checkout /></PrivateRouter>}></Route>
       </Routes>
     </Box>
   )

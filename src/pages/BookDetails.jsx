@@ -19,12 +19,12 @@ const BookDetails = () => {
   const handleAddtoCart = (book) => {
     const token = localStorage.getItem("token");
     dispatch(addBookToCart(book , token)).then((res) => {
-      if(res){
+      if(res.isSuccess){
         dispatch(getUser(token)).then(() => {
-          alert("successfully added to cart.");
+          alert(res.msg);
         });
       }else{
-        alert("failed to add to cart");
+        alert(res.msg);
       }
     });
   }

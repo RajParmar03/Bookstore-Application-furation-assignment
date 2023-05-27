@@ -38,13 +38,13 @@ export const addBookToCart = (book , token) => async(dispatch) => {
         });
         const res = await responce.json();
         if(res.isSuccess){
-            return true;
+            return {isSuccess:true , msg : res.msg};
         }else{
-            return false;
+            return {isSuccess:false , msg : res.msg};
         }
     } catch (error) {
         console.log("error is occured in addBookToCart function" , error);
-        return false;
+        return {isSuccess : false , msg : "failed to add to cart."};
     }
 }
 
