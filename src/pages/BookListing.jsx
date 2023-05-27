@@ -39,8 +39,8 @@ const BookListing = () => {
 
   return (
     <Box>
-      <Heading>List Of Books</Heading>
-      <div>
+      <Heading>LIST OF BOOKS</Heading>
+      <div className={Styles.filterSearch}>
         <select onChange={(e) => handleFilter(e.target.value)}>
           <option value={""}>Filter By Genre</option>
           <option value={"fiction"}>fiction</option>

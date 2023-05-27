@@ -4,6 +4,8 @@ import { useFormik } from 'formik';
 import { signupSchema } from '../schemas/signupSchema';
 import { useNavigate } from 'react-router-dom';
 
+import Styles from "./styles/form.module.css";
+
 const baseUrl = "http://localhost:8080";
 
 const SignUpUser = async (userDetails) => {
@@ -48,8 +50,9 @@ const Signup = () => {
   });
 
   return (
-    <Box>
-      <form onSubmit={handleSubmit}>
+    <div className={Styles.mainBox}>
+      <h1>SIGN UP</h1>
+      <form onSubmit={handleSubmit} className={Styles.formBox}>
         <div>
           <label htmlFor="username">username</label>
           <input type="text" name="username" id="username" placeholder="username" value={values.username} onChange={handleChange} onBlur={handleBlur} />
@@ -74,7 +77,7 @@ const Signup = () => {
           <button type="submit">Sign Up</button>
         </div>
       </form>
-    </Box>
+    </div>
   )
 }
 

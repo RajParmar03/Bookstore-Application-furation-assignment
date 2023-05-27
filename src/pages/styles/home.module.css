@@ -1,0 +1,10 @@
+.mainBox > h1{
+    font-size: 25px;
+    margin: auto auto 30px auto;
+}
+.mainBox > button {
+    border: 2px solid gray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+}

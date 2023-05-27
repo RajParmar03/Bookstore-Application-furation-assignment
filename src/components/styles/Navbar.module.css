@@ -8,3 +8,17 @@
     margin-bottom: 50px;
     box-shadow: 0px 0px 10px 0px gray;
 }
+.innerBox1 {
+    width: 50%;
+    margin : auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.innerBox2{
+    width: 25%;
+    margin : auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}

@@ -6,13 +6,17 @@ import Styles from "./styles/Navbar.module.css";
 
 const Navbar = () => {
   return (
-    <Box className={Styles.navbar}>
-      <Link to="/">Home</Link>
-      <Link to="/signup">Signup</Link>
-      <Link to="/login">Login</Link>
-      <Link to="/bookslist">Books List</Link>
-      <Link to="/shoppincart">Shopping Cart</Link>
-    </Box>
+    <div className={Styles.navbar}>
+      <div className={Styles.innerBox1}>
+        <Link to="/">Home</Link>
+        <Link to="/bookslist">Books List</Link>
+        <Link to="/shoppincart">Shopping Cart</Link>
+      </div>
+      <div className={Styles.innerBox2}>
+        <Link to="/signup">Signup</Link>
+        <Link to="/login">Login</Link>
+      </div>
+    </div>
   )
 }
 

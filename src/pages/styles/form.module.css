@@ -1,0 +1,40 @@
+.mainBox{
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: 50%;
+    margin: auto auto 30px auto;
+    padding: 20px;
+}
+.mainBox > h1{
+    font-size: 25px;
+    margin: auto auto 30px auto;
+}
+.formBox{
+    border: 1px solid gray;
+    width:80%;
+    margin:auto auto 30px auto;
+    padding: 30px;
+}
+.formBox div{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-align: left;
+    padding: 10px 20px;
+}
+.formBox label{
+    font-size: 18px;
+}
+.formBox input {
+    border : 1px solid gray;
+    padding: 5px;
+}
+.formBox button {
+    margin : 30px auto auto auto;
+    border: 2px solid gray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.formBox > div p{
+    color : red;
+}

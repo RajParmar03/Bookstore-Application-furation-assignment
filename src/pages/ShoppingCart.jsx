@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { clearCart, getUser, removeBookFromCart } from '../redux/userManager/userManager.action';
 
+import Styles from "./styles/shoppingCart.module.css";
+
 const ShoppingCart = () => {
 
   const [cartList, setCartList] = useState([]);
@@ -57,25 +59,28 @@ const ShoppingCart = () => {
   console.log("this is cartlist from shopp : ", cartList);
 
   return (
-    <div>
-      <div>
-
+    <div className={Styles.parentBox}>
+      <div className={Styles.mainBox}>
         {
           cartList.map((elem, i) => {
             return (
               <div key={elem._id + i} onClick={() => handleSingleBook}>
-                <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoKMiaiIcTbmL_xpkRWSsrWp3bKaYDLBMaEFC9wgf-5Q&usqp=CAU&ec=48665701"} alt={elem.title} />
-                <p>Title : {elem.title}</p>
-                <p>Genre : {elem.genre}</p>
-                <p>Price : {elem.price}</p>
-                <p>author : {elem.author}</p>
-                <button style={{ zIndex: 1 }} onClick={() => handleRemoveFromCart(elem)}>Remove from cart</button>
+                <div className={Styles.imageBox}>
+                  <img src={"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQoKMiaiIcTbmL_xpkRWSsrWp3bKaYDLBMaEFC9wgf-5Q&usqp=CAU&ec=48665701"} alt={elem.title} />
+                </div>
+                <div className={Styles.detailsBox}>
+                  <p>Title : {elem.title}</p>
+                  <p>Genre : {elem.genre}</p>
+                  <p>Price : {elem.price}</p>
+                  <p>author : {elem.author}</p>
+                  <button style={{ zIndex: 1 }} onClick={() => handleRemoveFromCart(elem)}>Remove from cart</button>
+                </div>
               </div>
             )
           })
         }
       </div>
-      <div>
+      <div className={Styles.totalBox}>
         <p>Total Item : {cartList.length}</p>
         <p>Total Cost : {total}</p>
         <button onClick={() => handleCheckout()}>Checkout</button>

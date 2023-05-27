@@ -1,0 +1,23 @@
+.mainBox{
+    border : 2px solid gray;
+    border-radius: 10px;
+    width: 70%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+.mainBox > p {
+    font-size: 20px;
+    font-weight: bold;
+}
+.mainBox > button {
+    margin : 30px auto auto auto;
+    border: 2px solid gray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}

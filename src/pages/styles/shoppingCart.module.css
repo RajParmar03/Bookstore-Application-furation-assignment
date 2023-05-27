@@ -1,0 +1,63 @@
+.parentBox{
+    display: flex;
+}
+.mainBox{
+    border-radius: 10px;
+    width: 65%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 20px;
+    padding: 10px;
+}
+.mainBox > div {
+    border : 2px solid gray;
+    border-radius: 10px;
+    width: 95%;
+    margin: auto;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+.mainBox > div > p {
+    font-size: 20px;
+    font-weight: bold;
+}
+.mainBox > div > button {
+    margin : 30px auto auto auto;
+    border: 2px solid gray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+    font-weight: bold;
+}
+.mainBox button {
+    margin : 30px auto auto auto;
+    border: 2px solid gray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.totalBox{
+    border : 2px solid gray;
+    border-radius: 10px;
+    width: 33%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px;
+}
+.totalBox button{
+    margin : 30px auto auto auto;
+    border: 2px solid gray;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 18px;
+}
+.totalBox p {
+    font-size: 20px;
+    font-weight: bold;
+}

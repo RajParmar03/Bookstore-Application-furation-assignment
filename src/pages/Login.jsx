@@ -6,6 +6,9 @@ import { useDispatch } from 'react-redux';
 import { loginUser } from '../redux/userManager/userManager.action';
 import { useNavigate } from 'react-router-dom';
 
+import Styles from "./styles/form.module.css";
+
+
 
 const Login = () => {
 
@@ -38,8 +41,9 @@ const Login = () => {
 
 
     return (
-        <Box>
-            <form onSubmit={handleSubmit}>
+        <div className={Styles.mainBox}>
+                  <h1>LOGIN</h1>
+            <form onSubmit={handleSubmit} className={Styles.formBox}>
                 <div>
                     <label htmlFor="username">username</label>
                     <input type="text" name="username" id="username" placeholder="username" value={values.username} onChange={handleChange} onBlur={handleBlur} />
@@ -54,7 +58,7 @@ const Login = () => {
                     <button type="submit">Login</button>
                 </div>
             </form>
-        </Box>
+        </div>
     )
 }
 
