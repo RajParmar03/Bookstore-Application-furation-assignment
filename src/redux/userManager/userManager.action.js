@@ -1,4 +1,30 @@
-import { ADD_TO_CART } from "./userManager.actionType";
+import { ADD_TO_CART, USER_LOGIN } from "./userManager.actionType";
+
+const baseUrl = "http://localhost:8080";
+
+export const loginUser = (userDetails) => async(dispatch) => {
+    try {
+        const responce = await fetch(`${baseUrl}/users/login` , {
+            method : "POST",
+            headers : {
+                "Content-Type" : "application/json",
+            },
+            body : JSON.stringify(userDetails)
+        });
+        const res = await responce.json();
+        if(res.isSuccess){
+            localStorage.setItem("token" , res.token);
+            dispatch({type : USER_LOGIN , payload : res});
+            return {isSuccess  : true};
+        }else{
+            return {isSuccess : false};
+        }
+    } catch (error) {
+        console.log(error);
+        dispatch({type : USER_LOGIN , payload : {}});
+        return {isSuccess : false};
+    }
+}
 
 export const addBookToCart = (id) => async(dispatch) => {
     try {

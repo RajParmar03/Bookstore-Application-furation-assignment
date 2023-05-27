@@ -2,6 +2,22 @@ import { Box } from '@chakra-ui/react';
 import React from 'react';
 import { useFormik } from 'formik';
 import { signupSchema } from '../schemas/signupSchema';
+import { useNavigate } from 'react-router-dom';
+
+const baseUrl = "http://localhost:8080";
+
+const SignUpUser = async (userDetails) => {
+  // console.log("this is from signupuser : " , userDetails);
+  const responce = await fetch(`${baseUrl}/users/signup` , {
+    method : "POST",
+    headers : {
+      "Content-Type" : "application/json",
+    },
+    body : JSON.stringify(userDetails),
+  });
+  const res = await responce.json();
+  return res;
+}
 
 const Signup = () => {
 
@@ -12,12 +28,22 @@ const Signup = () => {
     confirm_password : ""
   }
 
+  const navigate = useNavigate();
+
   const {values , errors , handleBlur ,  touched , handleSubmit , handleChange } = useFormik({
     initialValues : initialValues,
     validationSchema : signupSchema,
     onSubmit : (values ,  action) => {
-      console.log("this is from onSubmit method and values is : " , values);
-      action.resetForm();
+      SignUpUser(values).then((res) => {
+        // console.log("this is from sinupuser then : " , res);
+        if(res.isSuccess){
+          alert("Success");
+          navigate("/login");
+        }else{
+          alert("failure");
+        }
+        action.resetForm();
+      });
     },
   });
 
