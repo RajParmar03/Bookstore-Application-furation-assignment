@@ -6,12 +6,16 @@ import BookDetails from '../pages/BookDetails';
 import ShoppingCart from '../pages/ShoppingCart';
 import Checkout from '../pages/Checkout';
 import { Box } from '@chakra-ui/react';
+import Signup from '../pages/Signup';
+import Login from '../pages/Login';
 
 const AllRoutes = () => {
   return (
     <Box>
       <Routes>
         <Route path="/" element={<Home />}></Route>
+        <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/login" element={<Login />}></Route>
         <Route path="/bookslist" element={<BookListing />}></Route>
         <Route path="/bookdetails/:id" element={<BookDetails />}></Route>
         <Route path="/shoppincart" element={<ShoppingCart />}></Route>

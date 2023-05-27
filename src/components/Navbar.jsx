@@ -8,6 +8,8 @@ const Navbar = () => {
   return (
     <Box className={Styles.navbar}>
       <Link to="/">Home</Link>
+      <Link to="/signup">Signup</Link>
+      <Link to="/login">Login</Link>
       <Link to="/bookslist">Books List</Link>
       <Link to="/shoppincart">Shopping Cart</Link>
     </Box>
