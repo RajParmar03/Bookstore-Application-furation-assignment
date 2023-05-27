@@ -70,6 +70,29 @@ export const removeBookFromCart = (book , token) => async(dispatch) => {
     }
 }
 
+export const clearCart = (token) => async(dispatch) => {
+    try {
+        const responce = await fetch(`${baseUrl}/users/clearcart`,{
+            method : "PATCH" , 
+            headers : {
+                "Content-Type" : "application/json",
+                Authorization: token
+            },
+            body : JSON.stringify({}),
+        });
+        const res = await responce.json();
+        if(res.isSuccess){
+            return true;
+        }else{
+            return false;
+        }
+    } catch (error) {
+        console.log("error is occured in addBookToCart function" , error);
+        return false;
+    }
+}
+
+
 export const getUser = (token) => async(dispatch) => {
 
     try {

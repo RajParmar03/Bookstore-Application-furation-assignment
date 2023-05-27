@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getUser, removeBookFromCart } from '../redux/userManager/userManager.action';
+import { clearCart, getUser, removeBookFromCart } from '../redux/userManager/userManager.action';
 
 const ShoppingCart = () => {
 
@@ -41,7 +41,17 @@ const ShoppingCart = () => {
   }
 
   const handleCheckout = () => {
-    navigate("/checkout");
+    const token = localStorage.getItem("token");
+    dispatch(clearCart(token)).then((res) => {
+      if (res) {
+        dispatch(getUser(token)).then(() => {
+          alert("successfully placed your order.");
+          navigate("/checkout");
+        });
+      } else {
+        alert("failed in placing the order");
+      }
+    });
   }
 
   console.log("this is cartlist from shopp : ", cartList);
